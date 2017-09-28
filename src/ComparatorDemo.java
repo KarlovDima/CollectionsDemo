@@ -20,18 +20,22 @@ public class ComparatorDemo {
 
 
 
-        cars.sort(new Comparator<Car>() {
-            @Override
-            public int compare(Car o1, Car o2) {
-                Integer first= o1.getYear();
-                Integer second= o2.getYear();
-                return first.compareTo(second);
-            }
-        });
+//        cars.sort(new Comparator<Car>() {
+//            @Override
+//            public int compare(Car o1, Car o2) {
+//                Integer first= o1.getYear();
+//                Integer second= o2.getYear();
+//                return first.compareTo(second);
+//            }
+//        });
 
-        Iterator<Car> iterator=cars.iterator();
-        while (iterator.hasNext())
-            System.out.println(iterator.next());
+        cars.stream().sorted((c1,c2)->((Integer)c1.getYear()).compareTo(c2.getYear())).forEach(c -> System.out.println(c));
+
+        System.out.println(cars.stream().filter(p->p.getYear()>=1997).count());
+
+//        Iterator<Car> iterator=cars.iterator();
+//        while (iterator.hasNext())
+//            System.out.println(iterator.next());
     }
 }
 
